@@ -1,6 +1,6 @@
 #NodeJSLint
 
-	JSLint wrapper for running JSLint under NodeJS
+JSLint wrapper for running JSLint under NodeJS
 
 ## Licence
 
