@@ -1,17 +1,20 @@
-/*globals require, process, JSLINT, console */
+/*globals fs, require, process, JSLINT, console */
 /*jslint evil:true*/
-var fs = require("fs"),
-	util = require("util");
+var fs = require("fs");
 
 fs.readFile("jslint.js", function (err, data) {
+	"use strict";
+	if (err) { throw err; }
 	var jslintText = data.toString(),
 		inputFileName = process.argv[2],
 		options = "\n";
-//		options = "/*jslint white: true, forin: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, maxerr: 10 */\n";
-	
+	/* Specify options like these */
+	// options = "/*jslint white: true, forin: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, maxerr: 10 */\n";
+
 	eval(jslintText);
 
 	fs.readFile(inputFileName, function (err, data) {
+		if (err) { throw err; }
 		var inputText = data.toString();
 
 		(function () {
