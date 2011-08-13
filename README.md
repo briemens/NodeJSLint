@@ -4,6 +4,10 @@ JSLint wrapper for running JSLint under NodeJS.
 
 	lint.sh <file.js>
 
+## Thanks
+
+	Initial WScript version for Windows from @cschraverus.
+
 ## Licence
 
 	MIT License
