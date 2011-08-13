@@ -1,6 +1,8 @@
 #NodeJSLint
 
-	JSLint wrapper for running JSLint under NodeJS
+JSLint wrapper for running JSLint under NodeJS.
+
+	lint.sh <file.js>
 
 ## Licence
 
