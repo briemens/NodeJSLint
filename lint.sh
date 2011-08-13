@@ -1,0 +1,1 @@
+node lint.js $1
