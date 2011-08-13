@@ -6,7 +6,7 @@ JSLint wrapper for running JSLint under NodeJS.
 
 ## Thanks
 
-	Initial WScript version for Windows from @cschraverus.
+Initial WScript version for Windows from @cschraverus.
 
 ## Licence
 
