@@ -1,20 +1,40 @@
 /*globals fs, require, process, JSLINT, console */
-/*jslint evil:true*/
+/*jslint evil:true, bitwise: true, unparam: true, maxerr: 50, white: true */
+/*!
+ * JSLint wrapper for NodeJS
+ * Copyright(c) 2011 Crafity
+ * Copyright(c) 2011 Bart Riemens
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
 var fs = require("fs");
 
+// Read JSLint Source Code
 fs.readFile("jslint.js", function (err, data) {
 	"use strict";
 	if (err) { throw err; }
-	var jslintText = data.toString(),
-		inputFileName = process.argv[2],
-		options = "\n";
-	/* Specify options like these */
+
+	// Store JSLint source code and arguments
+	var jslintText = data.toString()
+		, inputFileName = process.argv[2]
+		, options = "\n";
+
+	/**
+	 * Specify options like these if you
+	 * want to enforce them on every run
+	 **/
 	// options = "/*jslint white: true, forin: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, maxerr: 10 */\n";
 
 	eval(jslintText);
 
+	// Read the input file to validate against JSLint
 	fs.readFile(inputFileName, function (err, data) {
 		if (err) { throw err; }
+
+		// Store the source code from the file
 		var inputText = data.toString();
 
 		(function () {
@@ -39,6 +59,7 @@ fs.readFile("jslint.js", function (err, data) {
 					console.error("");
 				}
 
+				// Exit the process with an error code
 				process.exit(1);
 			} else {
 				if (JSLINT.data().globals !== undefined && JSLINT.data().globals !== null && JSLINT.data().globals.length > 0) {
@@ -46,6 +67,7 @@ fs.readFile("jslint.js", function (err, data) {
 				} else {
 					console.error("No globals");
 				}
+				//Exit the process with no error
 				process.exit(0);
 			}
 		}());
